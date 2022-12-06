@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+{% block body %}
+<h2>Logar</h2>
+
+<h2 class="word">
+    <form action="/login" method="post">
+          <input id="email" name="email" type="text" placeholder="e-mail" class="textbox"/></br></br>
+          <input type="submit" class="btn-success" value="Login"></br></br>
+    </form>
+</h2>
+<p class="bottom">Não tem uma conta?  <a class="bottom" href="/register"> Registre-se!</a></p>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+{% block body %}
+<h2>Eventos</h2>
+
+{% for i in range(0,len) %}
+    <hr>
+    <div class="continer">
+        Evento {{ i }}
+    </div>
+    <br>
+{% endfor %}
+
+{% endblock %}

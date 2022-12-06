@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+{% block body %}
+<h2>Registre-se</h2>
+
+<h2 class="word">
+    <form action="/register" method="post">
+          <input id="email" name="email" type="text" placeholder="e-mail" class="textbox"/></br></br>
+          <input id="nome" name="nome" type="text" placeholder="nome" class="textbox"/></br></br>
+          <input id="idade" name="idade" type="text" placeholder="idade" class="textbox"/></br></br>
+          <input id="genero" name="genero" type="text" placeholder="gênero" class="textbox"/></br></br>
+          <input id="etnia" name="etnia" type="text" placeholder="etnia" class="textbox"/></br></br>
+          <input id="cor" name="cor" type="text" placeholder="cor" class="textbox"/></br></br>
+          <input id="ocupacao" name="ocupacao" type="text" placeholder="ocupação" class="textbox"/></br></br>
+          <input id="cpf" name="cpf" type="text" placeholder="cpf" class="textbox"/></br></br>
+          <input id="orientacao" name="orientacao" type="text" placeholder="orientação sexual" class="textbox"/></br></br></br>
+
+
+          <input type="submit" class="btn-success" value="Registre-se"></br></br>
+    </form>
+</h2>
+{% endblock %}

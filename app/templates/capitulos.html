@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+{% block body %}
+<h2>Capítulos</h2>
+
+{% for i in range(0,len) %}
+    <hr>
+    <div class="continer">
+        Capitulo {{ i }}
+    </div>
+    <br>
+{% endfor %}
+
+{% endblock %}
