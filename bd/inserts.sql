@@ -320,4 +320,10 @@ BEGIN TRANSACTION;
     INSERT INTO ResultaProjColaborativo (PROJ_COLABORATIVO,COLABORACAO)
         VALUES (2,2);
 
+    -- Populando Mandato
+    INSERT INT Mandato (GLOBALCOUNCIL,PYLADY,PRESENCAS)
+        VALUES (2021,1,'https://linkpresencas1.com');
+    INSERT INT Mandato (GLOBALCOUNCIL,PYLADY,PRESENCAS)
+        VALUES (2022,2,'https://linkpresencas2.com');
+
 COMMIT;
