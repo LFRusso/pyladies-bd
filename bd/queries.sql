@@ -58,4 +58,33 @@ SELECT COUNT(*) AS participantes, P.nome AS pylady, Capitulo.nome AS capitulo
 
 -- 4. Obter média de faixa salarial das pyladies de cada capítulo, ordenado pela faixa salarial
 
--- 5. Obter total de enventos organizados por cada capítulo e nome dos capítulos
+SELECT Capitulo.nome, AVG(Pylady.faixa_salarial) AS Faixa_salarial_media FROM 
+    Capitulo JOIN Pylady ON Pylady.capitulo = Capitulo.id
+    GROUP BY Capitulo.id, Capitulo.nome
+    ORDER BY AVG(Pylady.faixa_salarial) DESC;
+
+-- Saída esperada:
+
+--
+--    nome    | faixa_salarial_media  
+--------------+-----------------------
+-- São Paulo  | 2200.0000000000000000
+-- São Carlos | 2000.0000000000000000
+--
+
+-- 5. Obter total de atividades organizadas por cada capítulo e nome dos capítulos
+
+SELECT Capitulo.nome, COUNT(*) FROM   
+    Capitulo JOIN (SELECT * FROM RealizaEvento 
+    UNION ALL SELECT * FROM RealizaProjInterno
+    UNION ALL SELECT * FROM RealizaProjColaborativo) X ON X.capitulo = Capitulo.id
+    GROUP BY Capitulo.id, Capitulo.nome;
+
+-- Saída esperada:
+
+--
+--    nome    | count 
+--------------+-------
+-- São Carlos |     7
+-- São Paulo  |     3
+--
