@@ -62,10 +62,10 @@ BEGIN TRANSACTION;
 
     -- Populando Capitulo
     ALTER TABLE Capitulo DISABLE TRIGGER ALL;
-    INSERT INTO Capitulo (NOME,CIDADE,ESTADO,PAIS,WEBSITE,REPRESENTANTE1,REPRESENTANTE2,N_INTEGRANTES)
-        VALUES ('São Carlos','São Carlos','São Paulo','Brasil','https://saocarlos.pyladies.com/',1,2,3);
-    INSERT INTO Capitulo (NOME,CIDADE,ESTADO,PAIS,WEBSITE,REPRESENTANTE1,REPRESENTANTE2,N_INTEGRANTES)
-        VALUES ('São Paulo','São Paulo','São Paulo','Brasil','https://brasil.pyladies.com/',5,6,2);
+    INSERT INTO Capitulo (NOME,CIDADE,ESTADO,PAIS,WEBSITE,REPRESENTANTE1,REPRESENTANTE2)
+        VALUES ('São Carlos','São Carlos','São Paulo','Brasil','https://saocarlos.pyladies.com/',1,2);
+    INSERT INTO Capitulo (NOME,CIDADE,ESTADO,PAIS,WEBSITE,REPRESENTANTE1,REPRESENTANTE2)
+        VALUES ('São Paulo','São Paulo','São Paulo','Brasil','https://brasil.pyladies.com/',5,6);
     ALTER TABLE Capitulo ENABLE TRIGGER ALL;
 
     -- Populando Pylady
@@ -321,9 +321,9 @@ BEGIN TRANSACTION;
         VALUES (2,2);
 
     -- Populando Mandato
-    INSERT INT Mandato (GLOBALCOUNCIL,PYLADY,PRESENCAS)
+    INSERT INTO Mandato (GLOBALCOUNCIL,PYLADY,PRESENCAS)
         VALUES (2021,1,'https://linkpresencas1.com');
-    INSERT INT Mandato (GLOBALCOUNCIL,PYLADY,PRESENCAS)
+    INSERT INTO Mandato (GLOBALCOUNCIL,PYLADY,PRESENCAS)
         VALUES (2022,2,'https://linkpresencas2.com');
 
 COMMIT;
