@@ -9,26 +9,37 @@ connection = psycopg2.connect(host="localhost", database="admin",user="admin", p
 @app.route('/', methods=["GET"])
 def index():
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM Evento;")
-        results = cursor.fetchall()
-    print(results)
-    return render_template("eventos.html", len=10)
+        cursor.execute("SELECT titulo, datahora, lugar, descricao, to_char(duracao,'HH:MI'), classificacao FROM Evento;")
+        eventos = cursor.fetchall()
+
+        cursor.execute("SELECT titulo, to_char(datahora,'YYYY-MM-DD HH:MI'), lugar, descricao, to_char(duracao,'HH:MI') FROM ProjetoInterno;")
+        projinterno = cursor.fetchall()
+
+        cursor.execute("SELECT titulo, to_char(datahora,'YYYY-MM-DD HH:MI'), lugar, descricao, to_char(duracao,'HH:MI') FROM ProjetoColaborativo;")
+        projcolaborativo = cursor.fetchall()
+    
+    return render_template("eventos.html", len_eventos=len(eventos), eventos=eventos,
+                            len_internos=len(projinterno), projinterno=projinterno,
+                            len_colaborativos=len(projcolaborativo), projcolaborativo=projcolaborativo)
 
 @app.route('/membros', methods=["GET"])
 def pyladies():
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM PyLady;")
-        results = cursor.fetchall()
-    print(results)
-    return render_template("membros.html", len=10)
+        cursor.execute('''SELECT Pessoa.nome, Pessoa.email, Pessoa.idade, Pessoa.ocupacao, Capitulo.nome 
+                        FROM PyLady JOIN Pessoa ON PyLady.pessoa = Pessoa.id
+                        JOIN Capitulo ON Capitulo.id = PyLady.capitulo;''')
+        pyladies = cursor.fetchall()
+    print(pyladies)
+    return render_template("membros.html", len=len(pyladies), pyladies=pyladies)
 
 @app.route('/capitulos', methods=["GET"])
 def eventos():
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM Capitulo;")
-        results = cursor.fetchall()
-    print(results)
-    return render_template("capitulos.html", len=10)
+        cursor.execute('''SELECT C.nome, C.cidade, C.estado, C.pais, C.website 
+                        FROM Capitulo C;''')
+        capitulos = cursor.fetchall()
+        
+    return render_template("capitulos.html", len=len(capitulos), capitulos=capitulos)
 
 @app.route('/login', methods=["GET", "POST"])
 def account():

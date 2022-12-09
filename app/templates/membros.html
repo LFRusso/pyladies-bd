@@ -8,10 +8,21 @@
 <h2>PyLadies</h2>
 
 {% for i in range(0,len) %}
-    <hr>
-    <div class="continer">
-        PyLady {{ i }}
-    </div>
+<hr>
+<div class="continer">
+    <strong>PyLady {{ i+1 }}</strong>
     <br>
+    <strong>Nome:</strong> {{ pyladies[i][0] }}
+    <br>
+    <strong>e-mail:</strong> {{ pyladies[i][1] }}
+    <br>
+    <strong>Idade:</strong> {{ pyladies[i][2] }}
+    <br>
+    <strong>Ocupação:</strong> {{ pyladies[i][3] }}
+    <br>
+    <strong>Capítulo:</strong> {{ pyladies[i][4] }}
+    <br>
+</div>
+<br>
 {% endfor %}
 {% endblock %}

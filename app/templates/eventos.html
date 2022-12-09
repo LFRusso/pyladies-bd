@@ -7,12 +7,54 @@
 {% block body %}
 <h2>Eventos</h2>
 
-{% for i in range(0,len) %}
+{% for i in range(0,len_eventos) %}
     <hr>
     <div class="continer">
-        Evento {{ i }}
+        <strong>Evento {{ i+1 }}</strong>
+        <br>
+        <strong>{{ eventos[i][5] }}:</strong> {{ eventos[i][0] }}
+        <br>
+        <strong>Local:</strong> {{ eventos[i][2] }}
+        <br>
+        <strong>Data:</strong> {{ eventos[i][1] }}
+        <br>
     </div>
     <br>
 {% endfor %}
+
+<h2>Projetos Colaborativos</h2>
+
+{% for i in range(0,len_colaborativos) %}
+<hr>
+<div class="continer">
+    <strong>Projeto Colaborativo {{ i+1 }}</strong>
+    <br>
+    <strong>Projeto:</strong> {{ projcolaborativo[i][0] }}
+    <br>
+    <strong>Local:</strong> {{ projcolaborativo[i][2] }}
+    <br>
+    <strong>Data:</strong> {{ projcolaborativo[i][1] }}
+    <br>
+</div>
+<br>
+{% endfor %}
+
+<h2>Projetos Internos</h2>
+
+{% for i in range(0,len_internos) %}
+<hr>
+<div class="continer">
+    <strong>Projeto Interno {{ i+1 }}</strong>
+    <br>
+    <strong>Projeto:</strong> {{ projinterno[i][0] }}
+    <br>
+    <strong>Local:</strong> {{ projinterno[i][2] }}
+    <br>
+    <strong>Data:</strong> {{ projinterno[i][1] }}
+    <br>
+</div>
+<br>
+{% endfor %}
+
 
 {% endblock %}

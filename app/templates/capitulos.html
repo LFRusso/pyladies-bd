@@ -10,7 +10,14 @@
 {% for i in range(0,len) %}
     <hr>
     <div class="continer">
-        Capitulo {{ i }}
+        <strong>Capítulo {{ i+1 }}</strong>
+        <br>
+        <strong>Nome:</strong> {{ capitulos[i][0] }}
+        <br>
+        <strong>Local:</strong> {{ capitulos[i][1] }}, {{ capitulos[i][2] }}, {{ capitulos[i][3] }} 
+        <br>
+        <strong>Website:</strong> <a href="{{ capitulos[i][4] }}">{{ capitulos[i][4] }}</a>
+        <br>
     </div>
     <br>
 {% endfor %}
