@@ -5,14 +5,50 @@
 
 {% endblock %}
 {% block body %}
+
+{% if logged_in==False %}
 <h2>Logar</h2>
 
 <h2 class="word">
-    <form action="/login" method="post">
+    <form action="{{ url_for('login') }}" method="post">
           <input id="email" name="email" type="text" placeholder="e-mail" class="textbox"/></br></br>
           <input type="submit" class="btn-success" value="Login"></br></br>
     </form>
 </h2>
 <p class="bottom">Não tem uma conta?  <a class="bottom" href="/register"> Registre-se!</a></p>
+
+{% else %}
+
+<h2>Logado!</h2>
+
+<strong>Nome:</strong> {{ data[0] }}
+<br>
+<strong>Email:</strong> {{ data[1] }}
+<br>
+<strong>Idade:</strong> {{ data[2] }}
+<br>
+<strong>CPF:</strong> {{ data[3] }}
+<br>
+<br>
+
+<h3>Eventos participados</h3>
+{% for i in range(0,len_eventos) %}
+    <hr>
+    <div class="continer">
+        <strong>Evento {{ i+1 }}</strong>
+        <br>
+        <strong>{{ eventos[i][4] }}:</strong> {{ eventos[i][0] }}
+        <br>
+        <strong>Local:</strong> {{ eventos[i][2] }}
+        <br>
+        <strong>Data:</strong> {{ eventos[i][1] }}
+        <br>
+        <strong>Certificado:</strong> {{ eventos[i][5] }}
+        <br>
+    </div>
+    <br>
+{% endfor %}
+
+{% endif %}
 
 {% endblock %}

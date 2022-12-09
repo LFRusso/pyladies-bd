@@ -4,6 +4,7 @@ import psycopg2
 import requests
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 connection = psycopg2.connect(host="localhost", database="admin",user="admin", password="admin", port=5432)
 
 @app.route('/', methods=["GET"])
@@ -38,12 +39,36 @@ def eventos():
         cursor.execute('''SELECT C.nome, C.cidade, C.estado, C.pais, C.website 
                         FROM Capitulo C;''')
         capitulos = cursor.fetchall()
-        
+
     return render_template("capitulos.html", len=len(capitulos), capitulos=capitulos)
 
 @app.route('/login', methods=["GET", "POST"])
-def account():
-    return render_template("login.html")
+def login():    
+    logged_in = False
+    eventos = []
+    user = None
+
+    # Buscando email na base
+    try:
+        email = request.form["email"]
+    except:
+        email = None
+
+    with connection.cursor() as cursor:
+        cursor.execute(f"SELECT nome, email, idade, cpf FROM Pessoa WHERE email='{email}';")
+        data = cursor.fetchall()
+    
+    if(len(data) != 0): # Email encontrado
+        logged_in = True
+        user = data[0]
+        # Selecionando eventos participadps
+        with connection.cursor() as cursor:
+            cursor.execute(f'''SELECT E.titulo, E.datahora, E.lugar, E.descricao, E.classificacao, A.certificado
+            FROM Evento E JOIN (Pessoa JOIN ParticipacaoEvento ON Pessoa.id = ParticipacaoEvento.Pessoa) A
+            ON E.id = A.evento WHERE A.email='{email}';''')
+            eventos = cursor.fetchall()
+
+    return render_template("login.html", logged_in=logged_in, data=user, len_eventos=len(eventos), eventos=eventos)
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
