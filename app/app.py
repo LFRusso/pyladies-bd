@@ -70,9 +70,29 @@ def login():
 
     return render_template("login.html", logged_in=logged_in, data=user, len_eventos=len(eventos), eventos=eventos)
 
+
 @app.route('/register', methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+
+    try:
+        email = request.form["email"]
+        nome = request.form["nome"]
+        idade = request.form["idade"]
+        genero = request.form["genero"]
+        etnia = request.form["etnia"]
+        cor = request.form["cor"]
+        ocupacao = request.form["ocupacao"]
+        cpf = request.form["cpf"]
+        orientacao = request.form["orientacao"]
+    except:
+        return render_template("register.html")
+
+    # Inserindo usuário novo no banco
+    with connection.cursor() as cursor:
+        cursor.execute(f'''INSERT INTO Pessoa (EMAIL,NOME,IDADE,GENERO,ETNIA,COR,OCUPACAO,CPF,ORIENTACAOSEXUAL)
+                            VALUES ('{email}','{nome}',{idade},'{genero}','{etnia}','{cor}','{ocupacao}',{cpf},'{orientacao}');''')
+
+    return render_template("login.html", logged_in=False, data=None, len_eventos=0, eventos=None)
 
 if __name__=="__main__":
     app.run(host="0.0.0.0", debug=True, port=3000)
