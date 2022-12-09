@@ -38,9 +38,23 @@ SELECT C.nome, F.titulo FROM
 -- Colaborador 2 | curso azure
 -- 
 
--- 3. Obter número total de participantes dos eventos organizados por cada pylady e o nome da responsável, ordenado pelo número de participantes
+-- 3. Obter número total de participantes dos eventos organizados por cada pylady, seu nome e capítulo, ordenado pelo número de participantes
 
+SELECT COUNT(*) AS participantes, P.nome AS pylady, Capitulo.nome AS capitulo 
+    FROM (ParticipacaoEvento NATURAL JOIN OrganizaEvento) E
+    JOIN (Pylady JOIN Pessoa ON Pylady.pessoa = Pessoa.id) P ON E.pylady = P.id
+    JOIN Capitulo ON P.capitulo = Capitulo.id
+    GROUP BY P.id, P.nome, Capitulo.nome
+    ORDER BY COUNT(*) DESC;
 
+-- Saída esperada:
+
+--
+-- participantes |  pylady  |  capitulo  
+-----------------+----------+------------
+--             4 | ana      | São Carlos
+--             1 | carolina | São Paulo
+--
 
 -- 4. Obter média de faixa salarial das pyladies de cada capítulo, ordenado pela faixa salarial
 
