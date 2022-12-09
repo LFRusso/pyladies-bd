@@ -1,3 +1,4 @@
+-- Reinsere tudo no bd
 BEGIN TRANSACTION;
     DELETE FROM CAPITULO;
     DELETE FROM PESSOA;
@@ -105,17 +106,17 @@ BEGIN TRANSACTION;
 
     -- Populando Evento
     INSERT INTO Evento (TITULO,DATAHORA,LUGAR,DESCRICAO,RESPONSAVEL,DURACAO,FORMATO,CLASSIFICACAO)
-        VALUES ('curso de python',TO_TIMESTAMP('2022-12-01 9:30','YYYY-MM-DD HH:MI'),'icmc','curso de python para o icmc',1,TO_TIMESTAMP('2','H'),NULL,'curso');
+        VALUES ('curso de python',TO_TIMESTAMP('2022-12-01 9:30','YYYY-MM-DD HH:MI'),'icmc','curso de python para o icmc',1,TO_TIMESTAMP('2','HH'),NULL,'curso');
     INSERT INTO Evento (TITULO,DATAHORA,LUGAR,DESCRICAO,RESPONSAVEL,DURACAO,FORMATO,CLASSIFICACAO)
-        VALUES ('workshop sql',TO_TIMESTAMP('2022-12-01 12:00','YYYY-MM-DD HH:MI'),'ufscar','workshop de sql para a ufscar',2,TO_TIMESTAMP('4','H'),NULL,'workshop');
+        VALUES ('workshop sql',TO_TIMESTAMP('2022-12-01 12:00','YYYY-MM-DD HH:MI'),'ufscar','workshop de sql para a ufscar',2,TO_TIMESTAMP('4','HH'),NULL,'workshop');
     INSERT INTO Evento (TITULO,DATAHORA,LUGAR,DESCRICAO,RESPONSAVEL,DURACAO,FORMATO,CLASSIFICACAO)
-        VALUES ('ciência de dados',TO_TIMESTAMP('2022-12-01 07:30','YYYY-MM-DD HH:MI'),'online','palestra de ciência de dados',5,TO_TIMESTAMP('2','H'),NULL,'palestra');
+        VALUES ('ciência de dados',TO_TIMESTAMP('2022-12-01 07:30','YYYY-MM-DD HH:MI'),'online','palestra de ciência de dados',5,TO_TIMESTAMP('2','HH'),NULL,'palestra');
     INSERT INTO Evento (TITULO,DATAHORA,LUGAR,DESCRICAO,RESPONSAVEL,DURACAO,FORMATO,CLASSIFICACAO)
-        VALUES ('curso de c++',TO_TIMESTAMP('2022-12-01 9:30','YYYY-MM-DD HH:MI'),'icmc','curso de c++ para o icmc',1,TO_TIMESTAMP('2','H'),NULL,'curso');
+        VALUES ('curso de c++',TO_TIMESTAMP('2022-12-01 9:30','YYYY-MM-DD HH:MI'),'icmc','curso de c++ para o icmc',1,TO_TIMESTAMP('2','HH'),NULL,'curso');
     INSERT INTO Evento (TITULO,DATAHORA,LUGAR,DESCRICAO,RESPONSAVEL,DURACAO,FORMATO,CLASSIFICACAO)
-        VALUES ('workshop uml',TO_TIMESTAMP('2022-12-01 12:00','YYYY-MM-DD HH:MI'),'ufscar','workshop de uml para a ufscar',2,TO_TIMESTAMP('4','H'),NULL,'workshop');
+        VALUES ('workshop uml',TO_TIMESTAMP('2022-12-01 12:00','YYYY-MM-DD HH:MI'),'ufscar','workshop de uml para a ufscar',2,TO_TIMESTAMP('4','HH'),NULL,'workshop');
     INSERT INTO Evento (TITULO,DATAHORA,LUGAR,DESCRICAO,RESPONSAVEL,DURACAO,FORMATO,CLASSIFICACAO)
-        VALUES ('mercado de trabalho',TO_TIMESTAMP('2022-12-01 07:30','YYYY-MM-DD HH:MI'),'online','palestra sobre mercado de trablaho',5,TO_TIMESTAMP('2','H'),NULL,'palestra');
+        VALUES ('mercado de trabalho',TO_TIMESTAMP('2022-12-01 07:30','YYYY-MM-DD HH:MI'),'online','palestra sobre mercado de trablaho',5,TO_TIMESTAMP('2','HH'),NULL,'palestra');
 
     -- Populando ProjetoInterno
     INSERT INTO ProjetoInterno (TITULO,DATAHORA,LUGAR,DESCRICAO,RESPONSAVEL,DURACAO,LINK_RELATORIO)
